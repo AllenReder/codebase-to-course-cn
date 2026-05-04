@@ -23,6 +23,29 @@
   function $(sel, ctx) { return (ctx || document).querySelector(sel); }
   function $$(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
 
+  /* ── CODE HIGHLIGHTING ────────────────────────────────────── */
+  function highlightCodeBlocks(root) {
+    if (!window.Prism) return;
+    const scope = root || document;
+    $$('pre code', scope).forEach(codeEl => {
+      if (codeEl.dataset.highlighted === 'true') return;
+      const languageClass = Array.from(codeEl.classList).find(name => name.startsWith('language-'));
+      const language = languageClass ? languageClass.replace('language-', '') : 'markup';
+      const grammar = Prism.languages[language] || Prism.languages.markup || Prism.languages.plain;
+      const existingLines = $$('.code-line', codeEl);
+      const source = (
+        existingLines.length
+          ? existingLines.map(line => line.textContent).join('\n')
+          : codeEl.textContent
+      ).replace(/\r\n/g, '\n');
+      const highlighted = grammar ? Prism.highlight(source, grammar, language) : source;
+      codeEl.innerHTML = highlighted.replace(/\n/g, '<br>\n');
+      codeEl.dataset.highlighted = 'true';
+    });
+  }
+
+  highlightCodeBlocks(document);
+
   /* ── NAVIGATION & PROGRESS BAR ────────────────────────────── */
   const progressBar = $('#progress-bar');
   const navDots     = $$('.nav-dot');

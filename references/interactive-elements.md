@@ -34,11 +34,11 @@ The most important teaching element. Shows real code from the project on the lef
 <div class="translation-block animate-in">
   <div class="translation-code">
     <span class="translation-label">代码</span>
-    <pre><code>
-<span class="code-line"><span class="code-keyword">const</span> response = <span class="code-keyword">await</span> <span class="code-function">fetch</span>(url, {</span>
-<span class="code-line">  <span class="code-property">method</span>: <span class="code-string">'POST'</span>,</span>
-<span class="code-line">  <span class="code-property">headers</span>: { <span class="code-string">'Authorization'</span>: apiKey }</span>
-<span class="code-line">});</span>
+    <pre><code class="language-javascript">
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Authorization': apiKey }
+});
     </code></pre>
   </div>
   <div class="translation-english">
@@ -57,7 +57,7 @@ The most important teaching element. Shows real code from the project on the lef
 ```css
 .translation-block {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   gap: 0;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -72,13 +72,14 @@ The most important teaching element. Shows real code from the project on the lef
   font-size: var(--text-sm);
   line-height: 1.7;
   position: relative;
-  overflow-x: hidden;  /* NO horizontal scrollbar — ever */
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .translation-code pre,
 .translation-code code {
-  white-space: pre-wrap;       /* wrap long lines instead of scrolling */
-  word-break: break-word;      /* break mid-word if needed */
-  overflow-x: hidden;
+  white-space: pre;
+  word-break: normal;
+  overflow-x: visible;
 }
 .translation-english {
   background: var(--color-surface-warm);
@@ -107,9 +108,11 @@ The most important teaching element. Shows real code from the project on the lef
 ```
 
 **Rules:**
+- Every code block must declare a language class such as `language-python`, `language-javascript`, `language-json`, `language-bash`, or `language-html`
 - Each explanation line should correspond to 1-2 code lines
 - Use natural Simplified Chinese, not stiff jargon-heavy prose
 - Highlight the "why" not just the "what" — e.g., explain why the API key is included, not merely that the header is being set
+- Preserve code indentation and line breaks exactly; long lines should scroll horizontally instead of wrapping
 
 ---
 
@@ -640,7 +643,7 @@ The most important accessibility feature for non-technical learners. Any technic
 **HTML — mark up terms inline:**
 ```html
 <p>The extension uses a
-  <span class="term" data-definition="A service worker is a background script that runs independently of the web page — like a behind-the-scenes assistant that's always on, even when you're not looking at the page.">service worker</span>
+  <span class="term" data-definition="service worker 是一种独立于网页运行的后台脚本。你可以把它理解成一个在页面背后持续待命的小助手，专门处理缓存、离线能力和网络请求协调。">service worker</span>
   to handle API calls.
 </p>
 ```
@@ -785,6 +788,8 @@ document.addEventListener('click', () => {
 
 **Rules:**
 - Mark up EVERY technical term on first use in each module (API, DOM, callback, async, endpoint, middleware, etc.)
+- `data-definition` must be written in natural Simplified Chinese by default
+- Do not force `中文（English term）` formatting in surrounding prose; use it only when the English term is genuinely useful for search, prompting, or matching code
 - Keep definitions to 1-2 sentences max, in everyday Chinese
 - Use a metaphor in the definition when it helps — e.g., "A **callback** is like leaving your phone number at a restaurant so they can call you when your table is ready"
 - Don't mark the same term twice within the same screen — only on first appearance per module

@@ -32,7 +32,7 @@ The output is a **single HTML file** — no dependencies, no setup, works offlin
 - **Interactive quizzes** that test *application* not memorization ("You want to add favorites — which files change?")
 <img width="720" alt="Interactive quiz" src="https://github.com/user-attachments/assets/57706496-9fa8-457a-8450-3da22789951c" />
 
-- **Glossary tooltips** — hover any technical term for a plain-English definition
+- **Glossary tooltips** — hover any technical term for a plain-language Chinese definition
 <img width="720" alt="Glossary tooltip" src="https://github.com/user-attachments/assets/ac2f160a-d73f-4779-97b2-a06fdb5f3227" />
 
   
@@ -77,7 +77,7 @@ Each concept gets a metaphor that fits *that specific idea*. A database is a lib
 Code snippets are exact copies from the real codebase — never modified or simplified. The learner should be able to open the actual file and see the same code they learned from.
 
 ### Chinese Language
-使用中文创建网页, 代码/变量/标识符保持英文，专业名词保持英文，并在括号后添加中文翻译解释
+使用中文创建网页，代码/变量/标识符保持英文；说明性文案默认写自然中文，不要求在每个专业名词后强制补括号中文解释
 
 ## Skill structure
 

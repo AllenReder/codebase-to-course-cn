@@ -82,8 +82,8 @@
   --space-24: 6rem;
 
   /* LAYOUT */
-  --content-width:      800px;
-  --content-width-wide: 1000px;
+  --content-width:      1024px;
+  --content-width-wide: 1200px;
   --nav-height:         50px;
 
   /* RADII */
@@ -144,20 +144,53 @@ pre, code {
   word-break: break-word;
   overflow-x: hidden;
 }
-.translation-code::-webkit-scrollbar,
-pre::-webkit-scrollbar { display: none; }
+
+.translation-code::-webkit-scrollbar {
+  height: 10px;
+}
+.translation-code::-webkit-scrollbar-thumb {
+  background: rgba(205, 214, 244, 0.22);
+  border-radius: var(--radius-full);
+}
+.translation-code::-webkit-scrollbar-track {
+  background: rgba(205, 214, 244, 0.06);
+}
 
 /* Catppuccin-inspired syntax highlighting */
-.code-keyword  { color: #CBA6F7; }
-.code-string   { color: #A6E3A1; }
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata,
+.code-comment { color: #6C7086; }
+.token.punctuation,
+.token.operator,
+.code-operator { color: #BAC2DE; }
+.token.keyword,
+.token.atrule,
+.code-keyword { color: #CBA6F7; }
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.code-string,
+.code-value { color: #A6E3A1; }
+.token.function,
+.token.class-name,
+.token.method,
+.token.selector,
 .code-function { color: #89B4FA; }
-.code-comment  { color: #6C7086; }
-.code-number   { color: #FAB387; }
-.code-property { color: #F9E2AF; }
-.code-operator { color: #94E2D5; }
-.code-tag      { color: #F38BA8; }
-.code-attr     { color: #F9E2AF; }
-.code-value    { color: #A6E3A1; }
+.token.number,
+.token.boolean,
+.token.constant,
+.code-number { color: #FAB387; }
+.token.property,
+.token.parameter,
+.token.builtin,
+.code-property,
+.code-attr { color: #F9E2AF; }
+.token.tag,
+.token.symbol,
+.code-tag { color: #F38BA8; }
 .code-line     { display: block; }
 
 /* ── NAV ────────────────────────────────────────────────────── */
@@ -322,7 +355,7 @@ p:last-child { margin-bottom: 0; }
 /* ── TRANSLATION BLOCKS ─────────────────────────────────────── */
 .translation-block {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   gap: 0;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -338,7 +371,26 @@ p:last-child { margin-bottom: 0; }
   font-size: var(--text-sm);
   line-height: 1.7;
   position: relative;
-  overflow-x: hidden;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.translation-code pre,
+.translation-code code {
+  white-space: pre;
+  word-break: normal;
+  overflow-x: visible;
+}
+
+.translation-code pre {
+  margin: 0;
+  min-width: max-content;
+}
+
+.translation-code code {
+  display: block;
+  min-width: max-content;
 }
 
 .translation-english {
@@ -347,6 +399,7 @@ p:last-child { margin-bottom: 0; }
   font-size: var(--text-sm);
   line-height: 1.7;
   border-left: 3px solid var(--color-accent);
+  min-width: 0;
 }
 
 .translation-label {

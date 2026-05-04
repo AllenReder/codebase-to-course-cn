@@ -56,7 +56,7 @@ Every technical term (API, DOM, callback, middleware, etc.) gets a dashed-underl
 - Infrastructure terms (PATH, pip, namespace, entry point, etc.)
 - Acronyms — ALWAYS tooltip acronyms on first use
 
-**The vocabulary IS the learning.** One of the key goals is for learners to acquire the precise technical vocabulary they need to communicate with AI coding agents. Each tooltip should teach the term in a way that helps the learner USE it in their own instructions. Default to Chinese explanations, and include the original English term when it matters for prompting or code search.
+**The vocabulary IS the learning.** One of the key goals is for learners to acquire the precise technical vocabulary they need to communicate with AI coding agents. Each tooltip should teach the term in a way that helps the learner USE it in their own instructions. Default to natural Chinese explanations. Include the original English term only when it materially helps with prompting, code search, or matching the source code.
 
 **Cursor:** Use `cursor: pointer` on terms (not `cursor: help`). The question-mark cursor feels clinical — a pointer feels clickable and inviting.
 

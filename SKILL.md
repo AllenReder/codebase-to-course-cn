@@ -30,7 +30,7 @@ The target learner is a **"vibe coder"** — someone who builds software by inst
 
 **Assume zero technical background.** Every CS concept — from variables to APIs to databases — needs to be explained in plain language as if the learner has never encountered it. No jargon without definition. No "as you probably know." The tone should be like a smart friend explaining things, not a professor lecturing.
 
-**Write explanations in natural Simplified Chinese.** Prefer concise, idiomatic Chinese over stiff literal translation. When a technical term has a standard Chinese rendering plus an important English source term, introduce it once in the form `中文名（English term）`, then use the clearer term consistently afterward.
+**Write explanations in natural Simplified Chinese.** Prefer concise, idiomatic Chinese over stiff literal translation. Keep code snippets, file paths, API names, class names, function names, and other literal identifiers in their original source form. For surrounding prose, default to natural Chinese phrasing instead of forcing `中文（English term）` patterns everywhere.
 
 **Their goals are practical, not academic:**
 - Have enough technical knowledge to effectively **steer AI coding tools** — make better architectural and tech stack decisions
@@ -160,6 +160,8 @@ course-name/
 - `NAV_DOTS` → one `<button class="nav-dot" ...>` per module
 
 **Step 3: Write modules** — This is where the paths diverge.
+
+When writing any code snippet into a module, always add the most accurate `language-*` class on the `<code>` element, such as `language-python`, `language-javascript`, `language-json`, `language-bash`, or `language-html`. The shared template now performs runtime syntax highlighting based on that class.
 
 #### Sequential path (simple codebases)
 
