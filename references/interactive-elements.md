@@ -5,7 +5,7 @@ Implementation patterns for every interactive element type used in courses. Pick
 > **Architecture note:** All CSS and JavaScript for these elements live in `references/styles.css` and `references/main.js`, which are copied verbatim into every course directory. When writing module HTML files, use only the HTML patterns below — do **not** inline `<style>` or `<script>` tags for these elements. The engines in `main.js` auto-initialize on page load by scanning for the relevant class names and `data-*` attributes described here.
 
 ## Table of Contents
-1. [Code ↔ English Translation Blocks](#code--english-translation-blocks)
+1. [Code ↔ 中文讲解对照块](#code--中文讲解对照块)
 2. [Multiple-Choice Quizzes](#multiple-choice-quizzes)
 3. [Drag-and-Drop Matching](#drag-and-drop-matching)
 4. [Group Chat Animation](#group-chat-animation)
@@ -25,15 +25,15 @@ Implementation patterns for every interactive element type used in courses. Pick
 
 ---
 
-## Code ↔ English Translation Blocks
+## Code ↔ 中文讲解对照块
 
-The most important teaching element. Shows real code from the project on the left and a plain English translation on the right, line by line.
+The most important teaching element. Shows real code from the project on the left and a plain-language Simplified Chinese explanation on the right, line by line.
 
 **HTML:**
 ```html
 <div class="translation-block animate-in">
   <div class="translation-code">
-    <span class="translation-label">CODE</span>
+    <span class="translation-label">代码</span>
     <pre><code>
 <span class="code-line"><span class="code-keyword">const</span> response = <span class="code-keyword">await</span> <span class="code-function">fetch</span>(url, {</span>
 <span class="code-line">  <span class="code-property">method</span>: <span class="code-string">'POST'</span>,</span>
@@ -42,12 +42,12 @@ The most important teaching element. Shows real code from the project on the lef
     </code></pre>
   </div>
   <div class="translation-english">
-    <span class="translation-label">PLAIN ENGLISH</span>
+    <span class="translation-label">中文讲解</span>
     <div class="translation-lines">
-      <p class="tl">Send a request to the URL and wait for a response...</p>
-      <p class="tl">We're sending data (POST), not just asking for it (GET)...</p>
-      <p class="tl">Include our API key so the server knows who we are...</p>
-      <p class="tl">End of the request setup.</p>
+      <p class="tl">向这个 URL 发出请求，并等待服务器返回结果……</p>
+      <p class="tl">这里用的是 POST，表示我们在“发送数据”，不是单纯去“取数据”。</p>
+      <p class="tl">把 API key 一起带上，这样服务端才知道请求是谁发来的。</p>
+      <p class="tl">请求参数到这里就设置完成了。</p>
     </div>
   </div>
 </div>
@@ -107,9 +107,9 @@ The most important teaching element. Shows real code from the project on the lef
 ```
 
 **Rules:**
-- Each English line should correspond to 1-2 code lines
-- Use conversational language, not technical jargon
-- Highlight the "why" not just the "what" — e.g., "Include our API key so the server knows who we are" not "Set the Authorization header"
+- Each explanation line should correspond to 1-2 code lines
+- Use natural Simplified Chinese, not stiff jargon-heavy prose
+- Highlight the "why" not just the "what" — e.g., explain why the API key is included, not merely that the header is being set
 
 ---
 
@@ -125,27 +125,27 @@ For testing understanding with instant feedback. Each question has options, one 
   <div class="quiz-question-block"
        data-correct="option-b"
        data-explanation-right="Exactly — because X is responsible for Y in this architecture."
-       data-explanation-wrong="Not quite. Think about where Y lives in the codebase...">
-    <h3 class="quiz-question">Question text here?</h3>
+       data-explanation-wrong="还差一点。想想 Y 在这个代码库里是在哪一层负责的……">
+    <h3 class="quiz-question">这里写题目？</h3>
     <div class="quiz-options">
       <button class="quiz-option" data-value="option-a" onclick="selectOption(this)">
         <div class="quiz-option-radio"></div>
-        <span>Answer A</span>
+        <span>选项 A</span>
       </button>
       <button class="quiz-option" data-value="option-b" onclick="selectOption(this)">
         <div class="quiz-option-radio"></div>
-        <span>Answer B (correct)</span>
+        <span>选项 B（正确）</span>
       </button>
       <button class="quiz-option" data-value="option-c" onclick="selectOption(this)">
         <div class="quiz-option-radio"></div>
-        <span>Answer C</span>
+        <span>选项 C</span>
       </button>
     </div>
     <div class="quiz-feedback"></div>
   </div>
 
-  <button class="quiz-check-btn" onclick="checkQuiz('quiz-module3')">Check Answers</button>
-  <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module3')">Try Again</button>
+  <button class="quiz-check-btn" onclick="checkQuiz('quiz-module3')">检查答案</button>
+  <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module3')">再试一次</button>
 </div>
 ```
 
@@ -193,14 +193,14 @@ For matching concepts to descriptions. Supports both mouse (HTML5 Drag API) and 
 ```html
 <div class="dnd-container">
   <div class="dnd-chips">
-    <div class="dnd-chip" draggable="true" data-answer="actor-a">Actor A</div>
-    <div class="dnd-chip" draggable="true" data-answer="actor-b">Actor B</div>
-    <div class="dnd-chip" draggable="true" data-answer="actor-c">Actor C</div>
+    <div class="dnd-chip" draggable="true" data-answer="actor-a">角色 A</div>
+    <div class="dnd-chip" draggable="true" data-answer="actor-b">角色 B</div>
+    <div class="dnd-chip" draggable="true" data-answer="actor-c">角色 C</div>
   </div>
   <div class="dnd-zones">
     <div class="dnd-zone" data-correct="actor-a">
-      <p class="dnd-zone-label">Description for Actor A</p>
-      <div class="dnd-zone-target">Drop here</div>
+      <p class="dnd-zone-label">角色 A 的描述</p>
+      <div class="dnd-zone-target">拖到这里</div>
     </div>
     <!-- more zones -->
   </div>
@@ -337,7 +337,7 @@ iMessage/WeChat-style chat showing components "talking" to each other. Messages 
 
 ## Message Flow / Data Flow Animation
 
-Step-by-step visualization of data moving between components. User clicks "Next Step" to advance.
+Step-by-step visualization of data moving between components. User clicks "下一步" to advance.
 
 **Wiring:** `main.js` auto-initializes every `.flow-animation` on page load. Pass steps as JSON in `data-steps`. Each step object: `{ highlight: "flow-actor-id", label: "description", packet: true, from: "actor-id-suffix", to: "actor-id-suffix" }`. Actor element IDs must be `flow-actor-1`, `flow-actor-2`, etc. Control buttons need classes `.flow-next-btn` and `.flow-reset-btn`.
 
@@ -367,10 +367,10 @@ Step-by-step visualization of data moving between components. User clicks "Next 
 
   <div class="flow-packet" id="flow-packet"></div>
 
-  <div class="flow-step-label" id="flow-label">Click "Next Step" to begin</div>
+  <div class="flow-step-label" id="flow-label">点击“下一步”开始</div>
 
   <div class="flow-controls">
-    <button class="btn flow-next-btn">Next Step</button>
+    <button class="btn flow-next-btn">下一步</button>
     <button class="btn flow-reset-btn">Restart</button>
     <span class="flow-progress"></span>
   </div>
@@ -483,7 +483,7 @@ window.checkBugLine = function(el, isCorrect) {
   const feedback = el.closest('.bug-challenge').querySelector('.bug-feedback');
   if (isCorrect) {
     el.classList.add('correct');
-    feedback.innerHTML = '<strong>Found it!</strong> The listener uses an async operation (fetch) but doesn\'t return true. Chrome closes the message channel before the response can be sent. Fix: add <code>return true;</code> at the end.';
+    feedback.innerHTML = '<strong>找到了！</strong> 这里的 listener 做了异步操作（fetch），但没有返回 true。Chrome 会在响应发回去之前把消息通道关掉。修复方式：在末尾加上 <code>return true;</code>。';
     feedback.className = 'bug-feedback show success';
   } else {
     el.classList.add('incorrect');
@@ -635,7 +635,7 @@ For annotating config files, permissions, or settings:
 
 ## Glossary Tooltips
 
-The most important accessibility feature for non-technical learners. Any technical term in the course text should be wrapped in a tooltip that shows a plain-English definition on hover (desktop) or tap (mobile). The learner never has to leave the page or Google anything.
+The most important accessibility feature for non-technical learners. Any technical term in the course text should be wrapped in a tooltip that shows a plain-language Simplified Chinese definition on hover (desktop) or tap (mobile). The learner never has to leave the page or Google anything.
 
 **HTML — mark up terms inline:**
 ```html
@@ -785,7 +785,7 @@ document.addEventListener('click', () => {
 
 **Rules:**
 - Mark up EVERY technical term on first use in each module (API, DOM, callback, async, endpoint, middleware, etc.)
-- Keep definitions to 1-2 sentences max, in everyday language
+- Keep definitions to 1-2 sentences max, in everyday Chinese
 - Use a metaphor in the definition when it helps — e.g., "A **callback** is like leaving your phone number at a restaurant so they can call you when your table is ready"
 - Don't mark the same term twice within the same screen — only on first appearance per module
 - The dashed underline should be subtle enough not to distract but visible enough that curious learners discover it

@@ -2,7 +2,7 @@
 
 A Claude Code skill that turns any codebase into a beautiful, interactive single-page HTML course.
 
-Point it at a repo. Get back a stunning, self-contained course that teaches how the code works — with scroll-based navigation, animated visualizations, embedded quizzes, and code-with-plain-English side-by-side translations.
+Point it at a repo. Get back a stunning, self-contained course that teaches how the code works — with scroll-based navigation, animated visualizations, embedded quizzes, and code-with-plain-Chinese side-by-side translations.
 
 ## Who is this for?
 
@@ -75,6 +75,9 @@ Each concept gets a metaphor that fits *that specific idea*. A database is a lib
 ### Original code only
 
 Code snippets are exact copies from the real codebase — never modified or simplified. The learner should be able to open the actual file and see the same code they learned from.
+
+### Chinese Language
+使用中文创建网页, 代码/变量/标识符保持英文，专业名词保持英文，并在括号后添加中文翻译解释
 
 ## Skill structure
 

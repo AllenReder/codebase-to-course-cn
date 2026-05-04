@@ -1,11 +1,13 @@
 ---
 name: codebase-to-course
-description: "Turn any codebase into a beautiful, interactive single-page HTML course that teaches how the code works to non-technical people. Use this skill whenever someone wants to create an interactive course, tutorial, or educational walkthrough from a codebase or project. Also trigger when users mention 'turn this into a course,' 'explain this codebase interactively,' 'teach this code,' 'interactive tutorial from code,' 'codebase walkthrough,' 'learn from this codebase,' or 'make a course from this project.' This skill produces a stunning, self-contained HTML file with scroll-based navigation, animated visualizations, embedded quizzes, and code-with-plain-English side-by-side translations."
+description: "将任意代码库转换成一个精美、可交互的单页 HTML 课程，用非技术用户也能理解的方式讲清代码如何工作。当用户想基于代码库或项目创建交互式课程、教程或教学式导览时使用此技能；当用户提到“把这个做成课程”、“交互式讲解这个代码库”、“教我这个代码”、“从代码生成交互教程”、“代码库导览”、“通过这个代码库学习”或“把这个项目做成课程”时也应触发。该技能会生成一个精美、自包含的 HTML 输出，包含滚动式导航、动画可视化、嵌入式测验，以及代码与通俗中文讲解的对照内容。默认输出语言为简体中文，除非用户明确要求使用其他语言。"
 ---
 
 # Codebase-to-Course
 
-Transform any codebase into a stunning, interactive course. The output is a **directory** containing a pre-built `styles.css`, `main.js`, per-module HTML files, and an assembled `index.html` — open it directly in the browser with no setup required (only external dependency: Google Fonts CDN). The course teaches how the code works through scroll-based modules, animated visualizations, embedded quizzes, and plain-English translations of code.
+Transform any codebase into a stunning, interactive course. The output is a **directory** containing a pre-built `styles.css`, `main.js`, per-module HTML files, and an assembled `index.html` — open it directly in the browser with no setup required (only external dependency: Google Fonts CDN). The course teaches how the code works through scroll-based modules, animated visualizations, embedded quizzes, and plain-language translations of code.
+
+**Default language:** Write the course UI copy, module content, quiz text, tooltips, explanations, and navigation labels in **Simplified Chinese by default**. Only switch to another language if the user explicitly asks. Keep code snippets, file paths, API names, and other literal identifiers exactly as they appear in the source code.
 
 ## First-Run Welcome
 
@@ -18,7 +20,7 @@ When the skill is first triggered and the user hasn't specified a codebase yet, 
 > - **A GitHub link** — e.g., "make a course from https://github.com/user/repo"
 > - **The current project** — if you're already in a codebase, just say "turn this into a course"
 >
-> I'll read through the code, figure out how everything fits together, and generate a beautiful single-page HTML course with animated diagrams, plain-English code explanations, and interactive quizzes. The whole thing runs in your browser — no setup needed.
+> I'll read through the code, figure out how everything fits together, and generate a beautiful single-page HTML course with animated diagrams, plain-language code explanations, and interactive quizzes. The whole thing runs in your browser — no setup needed.
 
 If the user provides a GitHub link, clone the repo first (`git clone <url> /tmp/<repo-name>`) before starting the analysis. If they say "this codebase" or similar, use the current working directory.
 
@@ -27,6 +29,8 @@ If the user provides a GitHub link, clone the repo first (`git clone <url> /tmp/
 The target learner is a **"vibe coder"** — someone who builds software by instructing AI coding tools in natural language, without a traditional CS education. They may have built this project themselves (without looking at the code), or they may have found an interesting open-source project on GitHub and want to understand how it's built. Either way, they don't yet understand what's happening under the hood.
 
 **Assume zero technical background.** Every CS concept — from variables to APIs to databases — needs to be explained in plain language as if the learner has never encountered it. No jargon without definition. No "as you probably know." The tone should be like a smart friend explaining things, not a professor lecturing.
+
+**Write explanations in natural Simplified Chinese.** Prefer concise, idiomatic Chinese over stiff literal translation. When a technical term has a standard Chinese rendering plus an important English source term, introduce it once in the form `中文名（English term）`, then use the clearer term consistently afterward.
 
 **Their goals are practical, not academic:**
 - Have enough technical knowledge to effectively **steer AI coding tools** — make better architectural and tech stack decisions
@@ -88,7 +92,7 @@ This is a **menu, not a checklist**. Pick the modules that serve the codebase �
 
 **Each module should contain:**
 - 3-6 screens (sub-sections that flow within the module)
-- At least one code-with-English translation
+- At least one code-with-plain-language translation
 - At least one interactive element (quiz, visualization, or animation)
 - One or two "aha!" callout boxes with universal CS insights
 - A metaphor that grounds the technical concept in everyday life — but NEVER reuse the same metaphor across modules, and NEVER default to the "restaurant" metaphor (it's overused). Pick metaphors that organically fit the specific concept. The best metaphors feel *inevitable* for the concept, not forced.
@@ -96,7 +100,7 @@ This is a **menu, not a checklist**. Pick the modules that serve the codebase �
 **Mandatory interactive elements (every course must include ALL of these):**
 - **Group Chat Animation** — at least one across the course. These are the iMessage/WeChat-style conversations between components. They're one of the most engaging elements and must always appear, even if you have to creatively frame a module's concept as a conversation between actors.
 - **Message Flow / Data Flow Animation** — at least one across the course. The step-by-step packet animation between actors. If the codebase has any kind of request/response, data pipeline, or multi-step process, animate it. Every codebase has data flowing somewhere — find it.
-- **Code ↔ English Translation Blocks** — at least one per module (already required above, but reiterating: this is non-negotiable).
+- **Code ↔ 中文讲解 Translation Blocks** — at least one per module (already required above, but reiterating: this is non-negotiable).
 - **Quizzes** — at least one per module (multiple-choice, scenario, drag-and-drop, or spot-the-bug — any quiz type counts).
 - **Glossary Tooltips** — on every technical term, first use per module.
 
@@ -218,4 +222,4 @@ The `references/` directory contains detailed specs. **Read them only when you r
 - **`references/gotchas.md`** — Common failure points checklist. Read during Phase 3 and Phase 4 (review).
 - **`references/module-brief-template.md`** — Template for Phase 2.5 module briefs. Read only for complex codebases using the parallel path.
 - **`references/design-system.md`** — Complete CSS custom properties, color palette, typography scale, spacing system, shadows, animations, scrollbar styling. Read during Phase 3 when writing module HTML.
-- **`references/interactive-elements.md`** — Implementation patterns for every interactive element: drag-and-drop quizzes, multiple-choice quizzes, code↔English translations, group chat animations, message flow visualizations, architecture diagrams, pattern cards, callout boxes. Read the relevant sections during Phase 3.
+- **`references/interactive-elements.md`** — Implementation patterns for every interactive element: drag-and-drop quizzes, multiple-choice quizzes, code↔中文讲解对照块, group chat animations, message flow visualizations, architecture diagrams, pattern cards, callout boxes. Read the relevant sections during Phase 3.

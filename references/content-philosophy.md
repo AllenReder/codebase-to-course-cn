@@ -17,7 +17,7 @@ People's eyes glaze over text blocks. The course should feel closer to an infogr
 - A sequence of steps → **flow diagram with arrows** or **numbered step cards**
 - "Component A talks to Component B" → **animated data flow** or **group chat visualization**
 - "This file does X, that file does Y" → **visual file tree with annotations** or **icon + one-liner badges**
-- Explaining what code does → **code↔English translation block** (not a paragraph *about* the code)
+- Explaining what code does → **code↔中文讲解对照块** (not a paragraph *about* the code)
 - Comparing two approaches → **side-by-side columns** with visual contrast
 
 **Visual breathing room:**
@@ -25,8 +25,8 @@ People's eyes glaze over text blocks. The course should feel closer to an infogr
 - Alternate between full-width visuals and narrow text blocks to create rhythm
 - Every module should have at least one "hero visual" — a diagram, animation, or interactive element that dominates the screen and teaches the core concept at a glance
 
-### Code ↔ English Translations
-Every code snippet gets a side-by-side plain English translation. Left panel: real code from the project with syntax highlighting. Right panel: line-by-line plain English explaining what each line does. This is the single most valuable teaching tool for non-technical learners.
+### Code ↔ 中文讲解对照
+Every code snippet gets a side-by-side plain-language explanation in Simplified Chinese. Left panel: real code from the project with syntax highlighting. Right panel: line-by-line Chinese explanation of what each line does. This is the single most valuable teaching tool for non-technical learners.
 
 **Critical: No horizontal scrollbars on code.** All code must use `white-space: pre-wrap` so it wraps instead of scrolling. This is a course for non-technical people, not an IDE — readability beats preserving indentation structure.
 
@@ -47,7 +47,7 @@ Follow what actually happens when the learner does something they already do eve
 Use "aha!" callout boxes for universal CS insights. Use humor where natural (not forced). Give components personality — they're "characters" in a story, not abstract boxes on a diagram.
 
 ### Glossary Tooltips — No Term Left Behind
-Every technical term (API, DOM, callback, middleware, etc.) gets a dashed-underline tooltip on first use in each module. Hover on desktop or tap on mobile to see a 1-2 sentence plain-English definition. The learner should never have to leave the page to Google a term. This is the difference between a course that *says* it's for non-technical people and one that actually *is*.
+Every technical term (API, DOM, callback, middleware, etc.) gets a dashed-underline tooltip on first use in each module. Hover on desktop or tap on mobile to see a 1-2 sentence Simplified Chinese definition. The learner should never have to leave the page to Google a term. This is the difference between a course that *says* it's for non-technical people and one that actually *is*.
 
 **Be extremely aggressive with tooltips.** If there is even a 1% chance a non-technical person doesn't know a word, tooltip it. This includes:
 - Software names they might not know (Blender, GIMP, Audacity, etc.)
@@ -56,7 +56,7 @@ Every technical term (API, DOM, callback, middleware, etc.) gets a dashed-underl
 - Infrastructure terms (PATH, pip, namespace, entry point, etc.)
 - Acronyms — ALWAYS tooltip acronyms on first use
 
-**The vocabulary IS the learning.** One of the key goals is for learners to acquire the precise technical vocabulary they need to communicate with AI coding agents. Each tooltip should teach the term in a way that helps the learner USE it in their own instructions — e.g., "A **flag** is an option you add to a command to change its behavior — like adding '--json' to get structured data instead of plain text. When talking to AI, you'd say 'add a flag for verbose output.'"
+**The vocabulary IS the learning.** One of the key goals is for learners to acquire the precise technical vocabulary they need to communicate with AI coding agents. Each tooltip should teach the term in a way that helps the learner USE it in their own instructions. Default to Chinese explanations, and include the original English term when it matters for prompting or code search.
 
 **Cursor:** Use `cursor: pointer` on terms (not `cursor: help`). The question-mark cursor feels clinical — a pointer feels clickable and inviting.
 
@@ -79,8 +79,8 @@ The goal of learning is practical application — being able to *do something* w
 - Anything that can be answered by scrolling up and copying — that tests scrolling, not understanding
 
 **Quiz tone:**
-- Wrong answers get encouraging, non-judgmental explanations ("Not quite — here's why...")
-- Correct answers get brief reinforcement of the underlying principle ("Exactly! This works because...")
+- Wrong answers get encouraging, non-judgmental explanations (for example: "还差一点，原因在这里……")
+- Correct answers get brief reinforcement of the underlying principle (for example: "答对了，因为这里的关键是……")
 - Never punitive, never score-focused. No "You got 3/5!" — the quiz is a thinking exercise, not an exam
 - Wrong answer explanations should teach something new, not just say "wrong, the answer was B"
 
